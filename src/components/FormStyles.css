@@ -1,0 +1,287 @@
+* {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.toast {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  z-index: 5;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  background: -webkit-linear-gradient(#f6f0ea, #f1dfd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.main-form {
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass {
+  width: 65%;
+  height: 550px;
+  padding: 2.5%;
+  background: linear-gradient(
+    to top left,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2)
+  );
+  border-radius: 2rem;
+  backdrop-filter: blur(0.2rem);
+  box-shadow: 5px 2px 2px rgba(122, 122, 122, 0.3);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  justify-content: center;
+  align-items: center;
+  grid-template-areas:
+    "animation animation"
+    "title title"
+    "name number"
+    "riot currentrank"
+    "highestrank currentrank"
+    "pay pay"
+    "submit submit";
+}
+
+.glass div {
+  overflow: hidden;
+}
+
+.form-animation {
+  grid-area: animation;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.form-animation h1 {
+  position: absolute;
+  top: 20px;
+}
+
+.form-title {
+  grid-area: title;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.form-title h1 {
+  position: absolute;
+  bottom: 5px;
+}
+
+.form-name {
+  grid-area: name;
+  height: 100%;
+  width: 100%;
+}
+.form-number {
+  grid-area: number;
+  height: 100%;
+  width: 100%;
+}
+.form-riot {
+  grid-area: riot;
+  height: 100%;
+  width: 100%;
+}
+.form-currentrank {
+  grid-area: currentrank;
+  height: 100%;
+  width: 100%;
+}
+.form-highestrank {
+  grid-area: highestrank;
+  height: 100%;
+  width: 100%;
+}
+.form-pay {
+  grid-area: pay;
+  height: 100%;
+  width: 100%;
+}
+.form-submit {
+  grid-area: submit;
+  height: 100%;
+  width: 100%;
+}
+
+/* 2 level starts */
+.glass .form-currentrank {
+  height: 50%;
+}
+
+.glass div h1,
+.glass div input,
+.glass div label {
+  width: 100%;
+  height: 100%;
+}
+
+.glass div input {
+  background: transparent;
+}
+
+.glass div {
+  position: relative;
+}
+
+.glass div label {
+  position: absolute;
+  margin: 5px;
+  padding: 5px;
+  height: 95%;
+  width: 95%;
+  bottom: 0px;
+  left: 0%;
+  pointer-events: none;
+  border-bottom: 1px solid black;
+}
+
+.glass div label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #f6f0ea;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+
+.glass div input {
+  outline: none;
+  border: none;
+  padding-top: 30px;
+  color: white;
+}
+
+.glass .form-pay,
+.glass .form-submit {
+  position: relative;
+}
+
+.glass div button {
+  height: 70%;
+  width: 30%;
+  margin: 5px;
+  position: absolute;
+  left: 35%;
+  top: 15px;
+  border-radius: 2rem;
+  background: transparent;
+  border: 1px solid black;
+  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+  font-weight: 700;
+}
+.glass div button:hover {
+  box-shadow: inset 273.5px 0 0 0 rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+.glass div .pay:hover > .pay-first {
+  color: #042e6f;
+}
+.glass div .pay:hover > .tm {
+  color: #00baf2;
+}
+.submit:hover {
+  color: #50c878;
+}
+
+.content-name,
+.content-number,
+.content-riot,
+.content-currentrank,
+.content-highestrank {
+  position: relative;
+  bottom: -30px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+.form-name input:focus + .label-name .content-name,
+.form-name input:valid + .label-name .content-name {
+  position: relative;
+  left: 0;
+  bottom: -10px;
+  background: -webkit-linear-gradient(#f6f0ea, #f1dfd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-number input:focus + .label-number .content-number,
+.form-number input:valid + .label-number .content-number {
+  position: relative;
+  left: 0;
+  bottom: -10px;
+  background: -webkit-linear-gradient(#f6f0ea, #f1dfd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-riot input:focus + .label-riot .content-riot,
+.form-riot input:valid + .label-riot .content-riot {
+  position: relative;
+  left: 0;
+  bottom: -10px;
+  background: -webkit-linear-gradient(#f6f0ea, #f1dfd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-currentrank input:focus + .label-currentrank .content-currentrank,
+.form-currentrank input:valid + .label-currentrank .content-currentrank {
+  position: relative;
+  left: 0;
+  bottom: -10px;
+  background: -webkit-linear-gradient(#f6f0ea, #f1dfd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-highestrank input:focus + .label-highestrank .content-highestrank,
+.form-highestrank input:valid + .label-highestrank .content-highestrank {
+  position: relative;
+  left: 0;
+  bottom: -10px;
+  background: -webkit-linear-gradient(#f6f0ea, #f1dfd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-name input:focus + .label-name::after,
+.form-name input:valid + .label-name::after {
+  transform: translateX(0%);
+}
+
+.form-number input:focus + .label-number::after,
+.form-number input:valid + .label-number::after {
+  transform: translateX(0%);
+}
+
+.form-riot input:focus + .label-riot::after,
+.form-riot input:valid + .label-riot::after {
+  transform: translateX(0%);
+}
+
+.form-currentrank input:focus + .label-currentrank::after,
+.form-currentrank input:valid + .label-currentrank::after {
+  transform: translateX(0%);
+}
+
+.form-highestrank input:focus + .label-highestrank::after,
+.form-highestrank input:valid + .label-highestrank::after {
+  transform: translateX(0%);
+}
