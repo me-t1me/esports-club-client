@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const URL = process.env.REACT_APP_API_URL;
+
 export default axios.create({
-  baseURL: "https://esport-club-server.herokuapp.com/apis", // https://esport-club-server.herokuapp.com/ , http://localhost:3005/
+  baseURL: `${URL}/apis`, // https://esport-club-server.herokuapp.com/ , http://localhost:3005/
 });

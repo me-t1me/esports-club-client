@@ -5,7 +5,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AnimationText from "./AnimationText";
 
+const URL = process.env.REACT_APP_API_URL;
+
 const Form = () => {
+  const [isFilled, setFilled] = useState(false);
   const [isClicked, setClicked] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
   const [name, setName] = useState();
@@ -20,10 +23,7 @@ const Form = () => {
 
   const pay = async () => {
     try {
-      window.open(
-        "https://esport-club-server.herokuapp.com/apis/pay",
-        "_blank"
-      ); // https://esport-club-server.herokuapp.com/ , http://localhost:3005/
+      window.open(`${URL}/apis/pay`, "_blank"); // https://esport-club-server.herokuapp.com/ , http://localhost:3005/
     } catch (err) {
       console.log(err);
     }
@@ -100,6 +100,7 @@ const Form = () => {
               name="number"
               autoComplete="off"
               required
+              onClick={() => setFilled(true)}
               onChange={(e) => setMobile(e.target.value)}
             />
             <label htmlFor="number" className="label-number">
@@ -154,8 +155,12 @@ const Form = () => {
               className="pay"
               required
               onClick={() => {
-                pay();
-                setIsPaid(true);
+                if (isFilled === true) {
+                  pay();
+                  setIsPaid(true);
+                } else {
+                  alert("First fill info");
+                }
               }}
             >
               <span className="pay-first">Pay</span>
