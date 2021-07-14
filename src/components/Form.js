@@ -8,11 +8,10 @@ import AnimationText from "./AnimationText";
 const URL = process.env.REACT_APP_API_URL;
 
 const Form = () => {
-  const [isFilled, setFilled] = useState(false);
   const [isClicked, setClicked] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
   const [name, setName] = useState();
-  const [mobile, setMobile] = useState();
+  const [mobile, setMobile] = useState("");
   const [riotId, setRiotId] = useState();
   const [crank, setCrank] = useState();
   const [hrank, setHrank] = useState();
@@ -100,7 +99,6 @@ const Form = () => {
               name="number"
               autoComplete="off"
               required
-              onClick={() => setFilled(true)}
               onChange={(e) => setMobile(e.target.value)}
             />
             <label htmlFor="number" className="label-number">
@@ -155,7 +153,7 @@ const Form = () => {
               className="pay"
               required
               onClick={() => {
-                if (isFilled === true) {
+                if (mobile.length === 10) {
                   pay();
                   setIsPaid(true);
                 } else {
