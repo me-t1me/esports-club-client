@@ -285,3 +285,13 @@ h1 {
 .form-highestrank input:valid + .label-highestrank::after {
   transform: translateX(0%);
 }
+
+@media all and (max-width: 628px) {
+  * {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+}

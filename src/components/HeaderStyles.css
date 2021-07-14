@@ -67,3 +67,15 @@
   height: 60px;
   width: 100px;
 }
+
+@media all and (max-width: 628px) {
+  .club-title span {
+    font-size: 20px;
+  }
+}
+
+@media all and (max-width: 409px) {
+  .club-title span {
+    font-size: 15px;
+  }
+}
