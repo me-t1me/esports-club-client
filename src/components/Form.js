@@ -102,7 +102,7 @@ const Form = () => {
               onChange={(e) => setMobile(e.target.value)}
             />
             <label htmlFor="number" className="label-number">
-              <span className="content-number">WhatsApp Number</span>
+              <span className="content-number">WhatsApp No.</span>
             </label>
           </div>
 
