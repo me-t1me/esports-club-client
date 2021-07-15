@@ -156,8 +156,10 @@ const Form = () => {
                 if (mobile.length === 10) {
                   pay();
                   setIsPaid(true);
-                } else {
+                } else if (mobile === undefined || mobile === "") {
                   alert("First fill info");
+                } else {
+                  alert("Fill correct WhatsApp number");
                 }
               }}
             >
