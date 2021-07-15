@@ -1,0 +1,11 @@
+.failure-main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.failure-payment-message {
+  font-size: 25px;
+  text-align: center;
+}

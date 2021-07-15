@@ -1,6 +1,6 @@
 .container-header-div {
   height: 100px;
-  background: transparent;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
