@@ -9,12 +9,24 @@ import Footer from "./components/Form/Footer/Footer";
 import Success from "./components/Success/Success";
 import Failure from "./components/Failure/Failure";
 
+import Tourney from "./components/Tournament/Tourney";
+
 import "./App.css";
 
 const App = () => {
   return (
     <Router>
       <Switch>
+        <Route
+          path="/valorant/tournament"
+          render={() => (
+            <div className="tournament-div">
+              <Header />
+              <Tourney />
+              <Footer />
+            </div>
+          )}
+        />
         <Route path="/" exact component={Home} />
         <Route path="/failure" exact component={Failure} />
         <Route path="/success" exact component={Success} />

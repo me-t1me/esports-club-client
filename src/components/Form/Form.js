@@ -134,7 +134,7 @@ const Form = () => {
               onChange={(e) => setCrank(e.target.value)}
             />
             <label htmlFor="currentrank" className="label-currentrank">
-              <span className="content-currentrank">Current Rank</span>
+              <span className="content-currentrank">Current Act Rank</span>
             </label>
           </div>
 
@@ -147,7 +147,7 @@ const Form = () => {
               onChange={(e) => setHrank(e.target.value)}
             />
             <label htmlFor="highestrank" className="label-highestrank">
-              <span className="content-highestrank">Highest Rank</span>
+              <span className="content-highestrank">Highest Act Rank</span>
             </label>
           </div>
 

@@ -130,6 +130,7 @@ h1 {
 
 .glass div input {
   background: transparent;
+  padding-left: 10px;
 }
 
 .glass div {
