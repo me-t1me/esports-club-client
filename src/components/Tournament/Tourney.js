@@ -6,6 +6,7 @@ const Tourney = () => {
     <div className="tourney-container">
       <div className="fixture-container">
         <iframe
+          title="Tourney"
           src="https://challonge.com/mmi2ozcs/module"
           width="80%"
           height="1000"
