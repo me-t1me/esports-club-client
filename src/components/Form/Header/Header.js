@@ -1,5 +1,5 @@
 import "./HeaderStyles.css";
-import logo from "../assets/esports_colour.png";
+import logo from "../../../assets/esports_colour.png";
 
 const Header = () => {
   return (

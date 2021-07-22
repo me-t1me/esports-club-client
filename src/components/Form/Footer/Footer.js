@@ -1,7 +1,7 @@
 import "./FooterStyles.css";
-import facebook from "../assets/icons8-facebook-48.png";
-import instagram from "../assets/icons8-instagram-48.png";
-import github from "../assets/icons8-github-48.png";
+import facebook from "../../../assets/icons8-facebook-48.png";
+import instagram from "../../../assets/icons8-instagram-48.png";
+import github from "../../../assets/icons8-github-48.png";
 
 const Footer = () => {
   return (

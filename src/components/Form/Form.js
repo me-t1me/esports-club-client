@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Api from "../apis/Api";
+import Api from "../../apis/Api";
 import "./FormStyles.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AnimationText from "./AnimationText";
+import AnimationText from "./AnimationText/AnimationText";
 
 const URL = process.env.REACT_APP_API_URL;
 
@@ -18,11 +18,14 @@ const Form = () => {
 
   var currentdate = new Date();
 
-  const alert = (message) => toast.dark(`${message}`);
+  const alerttoast = (message) => toast.dark(`${message}`);
 
   const pay = async () => {
     try {
-      window.open(`${URL}/apis/pay`, "_blank"); // https://esport-club-server.herokuapp.com/ , http://localhost:3005/
+      window.open(`${URL}/apis/pay`, "_blank"); // https://esport-club-server.herokuapp.com , http://localhost:3005
+      alert(
+        "Please Submit after paying, otherwise Registration will be invalid"
+      );
     } catch (err) {
       console.log(err);
     }
@@ -43,8 +46,8 @@ const Form = () => {
     try {
       getStatus()
         .then((status) => sendData(status))
-        .then(() => alert("🔥🎉 Submission Successfull"))
-        .catch(() => alert("😢 Submission Failed"));
+        .then(() => alerttoast("🔥🎉 Submission Successfull"))
+        .catch(() => alerttoast("😢 Submission Failed"));
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +57,7 @@ const Form = () => {
     if (isClicked === true && isPaid === true) {
       getState();
     } else if (isClicked === true && isPaid === false) {
-      alert("❌💰 Payment not made");
+      alerttoast("❌💰 Payment not made");
       setClicked(false);
     }
     // eslint-disable-next-line
@@ -113,7 +116,7 @@ const Form = () => {
               autoComplete="off"
               required
               onMouseDownCapture={() =>
-                alert("😎 ID : noob 4201 (not noob#4201)")
+                alerttoast("😎 ID : noob 4201 (not noob#4201)")
               }
               onChange={(e) => setRiotId(e.target.value)}
             />
@@ -157,9 +160,9 @@ const Form = () => {
                   pay();
                   setIsPaid(true);
                 } else if (mobile === undefined || mobile === "") {
-                  alert("First fill info");
+                  alerttoast("First fill info");
                 } else {
-                  alert("Fill correct WhatsApp number");
+                  alerttoast("Fill correct WhatsApp number");
                 }
               }}
             >
