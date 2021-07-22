@@ -24,7 +24,7 @@ const Form = () => {
     try {
       window.open(`${URL}/apis/pay`, "_blank"); // https://esport-club-server.herokuapp.com , http://localhost:3005
       alert(
-        "Please Submit after paying, otherwise Registration will be invalid"
+        "Please Submit after paying fee, otherwise Registration will be invalid"
       );
     } catch (err) {
       console.log(err);
