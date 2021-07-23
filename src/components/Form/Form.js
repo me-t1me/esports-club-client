@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AnimationText from "./AnimationText/AnimationText";
 import logo from "../../assets/esports_colour.png";
 const URL = process.env.REACT_APP_API_URL;
+const MID = process.env.REACT_APP_MID;
 
 const loadRazorpay = (src) => {
   return new Promise((resolve) => {
@@ -52,12 +53,12 @@ const Form = () => {
     console.log(data);
 
     const options = {
-      key: "rzp_test_oxiMd345KuY8ER", // Enter the Key ID generated from the Dashboard
+      key: MID, // Enter the Key ID generated from the Dashboard
       amount: data.amount.toString(), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: data.currency,
       order_id: data.id,
       name: "Esports Club BPHC",
-      description: "Thank you",
+      description: "Duality Tournament",
       image: { logo },
       handler: function (response) {
         window.open("/success", "_blank");
