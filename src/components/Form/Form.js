@@ -4,8 +4,22 @@ import "./FormStyles.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AnimationText from "./AnimationText/AnimationText";
-
+import logo from "../../assets/esports_colour.png";
 const URL = process.env.REACT_APP_API_URL;
+
+const loadRazorpay = (src) => {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = src;
+    script.onload = () => {
+      resolve(true);
+    };
+    script.onerror = () => {
+      resolve(false);
+    };
+    document.body.appendChild(script);
+  });
+};
 
 const Form = () => {
   const [isClicked, setClicked] = useState(false);
@@ -15,20 +29,80 @@ const Form = () => {
   const [riotId, setRiotId] = useState();
   const [crank, setCrank] = useState();
   const [hrank, setHrank] = useState();
+  const [statusof, setStatus] = useState();
 
   var currentdate = new Date();
 
   const alerttoast = (message) => toast.dark(`${message}`);
 
-  const pay = async () => {
-    try {
-      window.open(`${URL}/apis/pay`, "_blank"); // https://esport-club-server.herokuapp.com , http://localhost:3005
-      alert(
-        "Please Submit after paying fee, otherwise Registration will be invalid"
-      );
-    } catch (err) {
-      console.log(err);
+  const displayRazorpay = async () => {
+    const res = await loadRazorpay(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+
+    if (!res) {
+      alert("Razorpay sdk failed to load");
+      return;
     }
+
+    const data = await fetch(`${URL}/apis/pay`, { method: "POST" }).then((t) =>
+      t.json()
+    );
+
+    console.log(data);
+
+    const options = {
+      key: "rzp_test_oxiMd345KuY8ER", // Enter the Key ID generated from the Dashboard
+      amount: data.amount.toString(), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: data.currency,
+      order_id: data.id,
+      name: "Esports Club BPHC",
+      description: "Thank you",
+      image: { logo },
+      handler: function (response) {
+        window.open("/success", "_blank");
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        setStatus("captured");
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+    rzp1.on("payment.failed", function (response) {
+      window.open("/failure", "_blank");
+      setStatus("not successful");
+
+      // alert(response.error.code);
+      // alert(response.error.description);
+      // alert(response.error.source);
+      // alert(response.error.step);
+      // alert(response.error.reason);
+      // alert(response.error.metadata.order_id);
+      // alert(response.error.metadata.payment_id);
+    });
+    rzp1.on("payment.successful", function (response) {
+      // alert(response.error.code);
+      // alert(response.error.description);
+      // alert(response.error.source);
+      // alert(response.error.step);
+      // alert(response.error.reason);
+      // alert(response.error.metadata.order_id);
+      // alert(response.error.metadata.payment_id);
+    });
+  };
+
+  const pay = () => {
+    displayRazorpay();
+    // try {
+
+    //   // window.open(`${URL}/apis/pay`, "_blank"); // https://esport-club-server.herokuapp.com , http://localhost:3005
+    //   // alert(
+    //   //   "Please Submit after paying fee, otherwise Registration will be invalid"
+    //   // );
+    // } catch (error) {
+    //   console.log(error.response.data);
+    // }
   };
 
   const getStatus = async () => {
@@ -45,7 +119,13 @@ const Form = () => {
   const getState = async () => {
     try {
       getStatus()
-        .then((status) => sendData(status))
+        .then((status) => {
+          if (status === statusof) {
+            sendData(status);
+          } else {
+            sendData(status + statusof);
+          }
+        })
         .then(() => alerttoast("🔥🎉 Submission Successfull"))
         .catch(() => alerttoast("😢 Submission Failed"));
     } catch (err) {
@@ -166,8 +246,8 @@ const Form = () => {
                 }
               }}
             >
-              <span className="pay-first">Pay</span>
-              <span className="tm">tm</span>
+              <span className="pay-first">Pay&nbsp;</span>
+              <span className="tm">Now</span>
             </button>
           </div>
 
