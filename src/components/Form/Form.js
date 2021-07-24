@@ -142,9 +142,9 @@ const Form = () => {
     if (isClicked === true && isPaid === true) {
       if (riotId.match("^[0-9a-zA-Z]+$")) {
         getState();
-        setClicked(false);
       } else {
         alerttoast("riot id should not contain #");
+        setClicked(false);
       }
     } else if (isClicked === true && isPaid === false) {
       alerttoast("❌💰 Payment not made");
