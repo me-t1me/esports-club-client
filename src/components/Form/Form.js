@@ -199,6 +199,7 @@ const Form = () => {
               type="text"
               name="riot"
               autoComplete="off"
+              pattern="^[a-zA-Z0-9]+$"
               required
               onMouseDownCapture={() =>
                 alerttoast("😎 ID : noob 4201 (not noob#4201)")
