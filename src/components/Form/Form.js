@@ -140,7 +140,12 @@ const Form = () => {
 
   useEffect(() => {
     if (isClicked === true && isPaid === true) {
-      getState();
+      if (riotId.match("^[0-9a-zA-Z]+$")) {
+        getState();
+        setClicked(false);
+      } else {
+        alerttoast("riot id should not contain #");
+      }
     } else if (isClicked === true && isPaid === false) {
       alerttoast("❌💰 Payment not made");
       setClicked(false);
@@ -199,7 +204,7 @@ const Form = () => {
               type="text"
               name="riot"
               autoComplete="off"
-              pattern="^[a-zA-Z0-9]+$"
+              // pattern="^[a-zA-Z0-9]+$"
               required
               onMouseDownCapture={() =>
                 alerttoast("😎 ID : noob 4201 (not noob#4201)")
