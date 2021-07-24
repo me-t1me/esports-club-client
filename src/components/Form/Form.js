@@ -61,7 +61,8 @@ const Form = () => {
       description: "Duality Tournament",
       image: { logo },
       handler: function (response) {
-        window.open("/success", "_blank");
+        alert(" Payment Successful, Proceed to submit your form. ");
+        // window.open("/success", "_blank");
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
@@ -71,7 +72,10 @@ const Form = () => {
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
     rzp1.on("payment.failed", function (response) {
-      window.open("/failure", "_blank");
+      // window.open("/failure", "_blank");
+      alert(
+        "Payment Failed, You can still submit the form, we will contact you to make payment afterwards. "
+      );
       setStatus("not successful");
 
       // alert(response.error.code);
