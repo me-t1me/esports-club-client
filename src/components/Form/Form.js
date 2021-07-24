@@ -143,7 +143,7 @@ const Form = () => {
       if (riotId.match("^[0-9a-zA-Z]+$")) {
         getState();
       } else {
-        alerttoast("riot id should not contain #");
+        alerttoast("riot id should not contain # and spaces");
         setClicked(false);
       }
     } else if (isClicked === true && isPaid === false) {
