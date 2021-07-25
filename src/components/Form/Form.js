@@ -140,10 +140,10 @@ const Form = () => {
 
   useEffect(() => {
     if (isClicked === true && isPaid === true) {
-      if (riotId.match("^[0-9a-zA-Z]+$")) {
+      if (riotId.match("^[0-9a-zA-Z ]+$")) {
         getState();
       } else {
-        alerttoast("riot id should not contain # and spaces");
+        alerttoast("riot id should not contain #");
         setClicked(false);
       }
     } else if (isClicked === true && isPaid === false) {
