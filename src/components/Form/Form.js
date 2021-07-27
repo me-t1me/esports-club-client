@@ -31,6 +31,8 @@ const Form = () => {
   const [crank, setCrank] = useState();
   const [hrank, setHrank] = useState();
   const [statusof, setStatus] = useState();
+  const [id, setId] = useState();
+  const [email, setEmail] = useState();
 
   var currentdate = new Date();
 
@@ -117,7 +119,7 @@ const Form = () => {
 
   const sendData = async (data) => {
     await Api.get(
-      `/${name}/${mobile}/${riotId}/${crank}/${hrank}/${data}/${currentdate}`
+      `/${name}/${mobile}/${riotId}/${crank}/${hrank}/${data}/${currentdate}/${id}/${email}`
     );
   };
 
@@ -139,7 +141,7 @@ const Form = () => {
   };
 
   useEffect(() => {
-    if (isClicked === true && isPaid === true) {
+    if (isClicked === true && isPaid === true && riotId !== undefined) {
       if (riotId.match("^[0-9a-zA-Z ]+$")) {
         getState();
       } else {
@@ -242,6 +244,32 @@ const Form = () => {
             </label>
           </div>
 
+          <div className="form-id">
+            <input
+              type="text"
+              name="id"
+              autoComplete="off"
+              required
+              onChange={(e) => setId(e.target.value)}
+            />
+            <label htmlFor="id" className="label-id">
+              <span className="content-id">Bits Id</span>
+            </label>
+          </div>
+
+          <div className="form-email">
+            <input
+              type="text"
+              name="email"
+              autoComplete="off"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="email" className="label-email">
+              <span className="content-email">Bits Email</span>
+            </label>
+          </div>
+
           <div className="form-pay">
             <button
               className="pay"
@@ -250,7 +278,14 @@ const Form = () => {
                 if (mobile.length === 10) {
                   pay();
                   setIsPaid(true);
-                } else if (mobile === undefined || mobile === "") {
+                } else if (
+                  mobile === undefined ||
+                  mobile === "" ||
+                  id === undefined ||
+                  id === "" ||
+                  email === undefined ||
+                  email === ""
+                ) {
                   alerttoast("First fill info");
                 } else {
                   alerttoast("Fill correct WhatsApp number");

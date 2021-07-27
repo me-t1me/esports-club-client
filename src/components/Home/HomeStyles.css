@@ -10,6 +10,7 @@ section {
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease 0s;
+  overflow: visible;
 }
 
 section h2 {
