@@ -214,8 +214,12 @@ h1 {
 .glass div .pay:hover > .pay-first {
   color: #042e6f;
 }
-.glass div .pay:hover > .tm {
+/* .glass div .pay:hover > .tm {
   color: #00baf2;
+} */
+
+.tm {
+  color: rgba(0, 0, 0, 1);
 }
 .submit:hover {
   color: #50c878;
@@ -351,4 +355,15 @@ h1 {
   .glass {
     width: 85%;
   }
+}
+
+.popup {
+  width: 500px;
+  height: 500px;
+}
+
+h4 {
+  font-size: 20px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.7);
 }

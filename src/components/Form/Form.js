@@ -4,6 +4,10 @@ import "./FormStyles.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AnimationText from "./AnimationText/AnimationText";
+// import Popup from "reactjs-popup";
+// import "reactjs-popup/dist/index.css";
+// import { usePopup } from "react-hook-popup";
+
 // import logo from "../../assets/esports_colour.png";
 // const URL = process.env.REACT_APP_API_URL;
 // const MID = process.env.REACT_APP_MID;
@@ -274,7 +278,22 @@ const Form = () => {
           </div>
 
           <div className="form-pay">
-            <h4>We will contact you for payment</h4>
+            <h4>
+              UPI ID: <span className="tm">siddhantashoknagar@oksbi</span>
+              <br />
+              note - put your name in comments
+            </h4>
+            {/* <Popup
+              trigger={
+                <button className="pay">
+                  <span className="pay-first">Pay&nbsp;</span>
+                  <span className="tm">Now</span>
+                </button>
+              }
+              modal
+            >
+              <div className="popup"> Modal content </div>
+            </Popup> */}
             {/* <button
               className="pay"
               required
