@@ -3,6 +3,17 @@
   font-family: sans-serif;
 }
 
+.closed {
+  color: red;
+  background: rgba(0, 0, 0, 0.7);
+  height: 50px;
+  text-align: center;
+  text-justify: center;
+  padding-top: 15px;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
 .toast {
   position: fixed;
   top: 5%;
