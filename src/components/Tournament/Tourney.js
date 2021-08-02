@@ -7,9 +7,9 @@ const Tourney = () => {
       <div className="fixture-container">
         <iframe
           title="Tourney"
-          src="https://challonge.com/mmi2ozcs/module"
-          width="80%"
-          height="1000"
+          src="https://challonge.com/dualitybphc/module"
+          width="90%"
+          height="700"
           frameborder="0"
           scrolling="auto"
           allowtransparency="true"
